@@ -8,15 +8,9 @@ import * as Yup from "yup";
 import { Button, FormGroup, Spinner } from "reactstrap";
 
 const PhotoForm = (props) => {
-  const { onSubmit, photoEdit, isAddMode } = props;
-  console.log("photoEdit", photoEdit);
-  const initialValues = photoEdit
-    ? photoEdit
-    : {
-        title: "",
-        categoryId: null,
-        photo: "",
-      };
+  const { onSubmit, initialValues, isAddMode } = props;
+  // console.log("photoEdit", photoEdit);
+  if (!initialValues) return null;
   const validationSchema = Yup.object({
     title: Yup.string().required("This field is required"),
     categoryId: Yup.number().required("This field is required"),

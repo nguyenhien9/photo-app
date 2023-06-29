@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 import Banner from "../../../../components/Banner";
 import PhotoForm from "../.././components/PhotoForm";
 // import { addPhoto, editPhoto } from "../../photoSlice";
-import { editPhoto, postPhoto } from "../../photoThunk";
+import { editPhoto, postPhoto, getListPhoto } from "../../photoThunk";
 const AddEditPage = () => {
   const dispatch = useDispatch();
   const photos = useSelector((state) => state.photoReducer.photoItems);
+  useEffect(() => {
+    if (photos.length === 0) {
+      dispatch(getListPhoto());
+    }
+  }, [dispatch, photos.length]);
+
   const { photoId } = useParams();
-  // console.log("555", useParams());
+  console.log("555", { photoId });
+  const isAddMode = !photoId;
   const photoEdit = photos.find(
     (photo) => photo.id === photoId
     // return console.log("edit", photo.id === photoId);
   );
   // console.log("edit", photoEdit);
-  const isAddMode = !photoId;
   // console.log(isAddMode);
+  const initialValues = isAddMode
+    ? {
+        title: "",
+        categoryId: null,
+        photo: "",
+      }
+    : photoEdit;
   const navigate = useNavigate();
   const handleSubmit = (values) => {
     setTimeout(() => {
@@ -37,7 +50,7 @@ const AddEditPage = () => {
       <div className="photo-edit__form">
         <PhotoForm
           onSubmit={handleSubmit}
-          photoEdit={photoEdit}
+          initialValues={initialValues}
           isAddMode={isAddMode}
         />
       </div>
