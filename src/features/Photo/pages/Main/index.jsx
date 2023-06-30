@@ -30,10 +30,7 @@ const MainPage = (props) => {
   };
   return (
     <div className="photo-main">
-      <Banner
-        title="🎉 Your awesome photos 🎉"
-        backgroundUrl={Images.BLUE_BG}
-      />
+      <Banner title="🎉 Your awesome photos 🎉" backgroundUrl={Images.BG} />
       <Container className="text-center">
         <div className="box-link">
           <Link className="link-add button" to="/photos/add">

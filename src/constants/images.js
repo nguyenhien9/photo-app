@@ -1,7 +1,7 @@
-import blueBackground from "../assets/images/blue-bg.jpg";
-
+// import blueBackground from "../assets/images/blue-bg.jpg";
+import bg from "../assets/images/bg.jpg";
 const Images = {
-  BLUE_BG: blueBackground,
+  BG: bg,
 };
 
 export default Images;
