@@ -1,1 +1,1 @@
-export const apiUrl = "https://6499a7a979fbe9bcf83fb671.mockapi.io/api";
+export const apiUrl = "https://64f04ff08a8b66ecf77971be.mockapi.io/photo";

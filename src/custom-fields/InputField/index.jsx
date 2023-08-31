@@ -4,7 +4,7 @@ import { Input, Label, FormGroup, FormFeedback } from "reactstrap";
 const InputField = (props) => {
   const { field, form, type, label, placeholder, disable } = props;
   const { name, value, onChange, onBlur } = field;
-  const { errors, touched } = form;
+  const { errors, touched, setFieldValue } = form;
   const showError = errors[name] && touched[name];
   // console.log(errors[name]);
   return (
